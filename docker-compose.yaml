@@ -1,0 +1,38 @@
+version: "3"
+services:
+  gateway:
+    build: ./gateway
+    ports:
+     - 5001:8080
+  
+  website:
+    image: php:apache
+    volumes:
+     - ./website:/var/www/html
+    ports:
+     - 80:80
+    depends_on:
+     - gateway
+  partnerapp:
+    volumes:
+     - /home/william/rjdata/RJ_HOME_61_1:/usr/local/sesame
+    ports:
+     - 8080:8080
+    image: wdubberley/rj:latest
+    container_name: "demo61"
+  publicrelaceapp:
+    volumes:
+     - /home/william/rjdata/RJ_HOME_59_0:/usr/local/sesame
+    ports:
+     - 7070:8080
+    image: wdubberley/rj:5.9latest
+    container_name: "demo59"
+  seedapp:
+    volumes:
+     - /home/william/rjdata/RJ_HOME_61_0:/usr/local/sesame
+    ports:
+     - 8181:8080
+    image: wdubberley/rj:latest
+    container_name: "Seed"
+
+
