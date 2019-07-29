@@ -7,9 +7,9 @@ services:
   
   website:
     image: php:apache
-    volumes:
-     - ./website:/var/www/html
     ports:
      - 80:80
+    volumes: 
+     - ./website:/var/www/html
     depends_on:
      - gateway

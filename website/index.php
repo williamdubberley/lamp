@@ -75,6 +75,7 @@
         $json = preg_replace('/(,)\s*}$/', '}', $json);
         return json_decode($json, $assoc);
     }
+    $ipAdd='192.168.1.4';
     if (isset($_POST['submit'])) {
         $Product = $_POST['product'];
         $ret = "";
@@ -92,9 +93,9 @@
         );
 
         if ($_POST['KeyType'] == 'ETL') {
-            $URL = 'http://'.$_SERVER['SERVER_NAME'].':5001/gateway/rest/license/createXmlLicense';
+            $URL = 'http://'.$ipAdd.':5001/gateway/rest/license/createXmlLicense';
         } else {
-            $URL = 'http://'.$_SERVER['SERVER_NAME'].':5001/gateway/rest/license/createLicense';
+            $URL = 'http://'.$ipAdd.':5001/gateway/rest/license/createLicense';
         }
         $options = array(
             'http' => array(
