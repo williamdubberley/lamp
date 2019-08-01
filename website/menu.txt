@@ -1,0 +1,8 @@
+<ul id="menu">
+ <li><a href="index.php">Home</a></li>
+ <li><a href="one.php">Page One</a></li>
+ <li><a href="two.php">Page Two</a></li>
+ <li><a href="three.php">Page Three</a></li>
+ <li><a href="four.php">Page Four</a></li>
+ <li><a href="five.php">Page Five</a></li>
+</ul>

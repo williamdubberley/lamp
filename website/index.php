@@ -1,14 +1,8 @@
-<html>
-<head>
-<title>License Creator</title>
-<link rel="stylesheet" href="lm.css">
-</head>
-<script type="text/javascript" src="lm.js"></script>
-<body>
-	<div class="container">
-
-		<img src="White_Papers_Banner.jpg">
-		<div class="top-left ">
+<?php 
+    require 'header.php';
+?>
+<main>
+	<div class="top-left ">
 			<h1>Sesame Software: License Creator v2.0</h1>
 		</div>
 		<div class="bottom-left">
@@ -62,7 +56,7 @@
 
 			<tr>
 				<td colspan="2">
-					<div>
+					
 <?php
 
     function json_decode_nice($json, $assoc = TRUE)
@@ -85,10 +79,11 @@
             if (next($Product) == true)
                 $ret .= ",";
         }
-        $data = array(
+        
+         $data = array(
             'host' => $_POST['host'],
             'user' => $_POST['user'],
-            'expire' => $_POST['expire'],
+            'expire' => date('m-d-Y', strtotime($_POST['expire'])),
             'product' => trim($ret)
         );
 
@@ -145,9 +140,9 @@
 
             echo "<table border='1' >";
             echo "<tr><th> Key:  </th>";
-            echo "<td style='word-wrap: break-word;'>";
+            echo "<td style='word-wrap: break-word;' ><p >";
 
-            echo "<xmp>";
+            echo "<xmp id='Key'>";
             echo formatXmlString($obj->key);
             echo "</xmp>";
         } else {
@@ -156,18 +151,21 @@
 
             echo "<table border='1' >";
             echo "<tr><th> Key:  </th>";
-            echo "<td style='word-wrap: break-word;'>";
+            echo "<td style='word-wrap: break-word;' id='Key'><p id='Key'>";
             echo $obj->key;
+            echo " </p>";
+
         }
     }
 
     ?>
-
-</div>
-				</td>
+            </td>
+            <td><button onclick="copyToClipboard('#Key')">Copy text</button></td>
 			</tr>
 		</table>
 	</div>
+</main
+<?php 
+    require 'footer.php';
+?>
 
-</body>
-</html>

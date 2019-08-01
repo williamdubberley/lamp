@@ -1,15 +1,28 @@
 version: "3"
 services:
   gateway:
+    container_name: LMWebservice
     build: ./service
     ports:
      - 5001:8080
   
   website:
-    image: php:apache
+    container_name: LMWebsite
+    build:
+      context: ./website
     ports:
      - 80:80
     volumes: 
      - ./website:/var/www/html
     depends_on:
      - gateway
+
+   
+  RelationalJunction: 
+    container_name: LMReplicationService
+    image: wdubberley/rj:latest
+    ports:
+       - 8888:8080
+    volumes:
+       - /home/william/rjdata/LM:/usr/local/sesame
+
