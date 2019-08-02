@@ -96,13 +96,14 @@ if (isset($_POST['submit'])) {
 
         /* fetch object array */
         while ($obj = $result->fetch_object()) {
-
+            $phpdate = strtotime( $obj->USAGEENDDATE );
+            $endDate = date( 'Y-m-d', $phpdate );
             echo "<tr>
                     <td> <input type='checkbox' name='$obj->ASSETNUMBER'> </td>
                     <td>  $obj->ASSETNUMBER </td>
                     <td>  $obj->NAMEX </td>
-                    <td>   $obj->USAGEENDDATE </td>
-                    <td>   $obj->QUANTITY </td>
+                    <td> <input type='date' name='expire' value='".$endDate."'>   </td>
+                    <td>  <input type='number' name='Quanity' value='".$obj->QUANTITY ."'></td>
                      <td>  $obj->STANDARDX </td>
                    <td>  $obj->HOSTX </td>
                     <td>  $obj->HOST2 </td>
